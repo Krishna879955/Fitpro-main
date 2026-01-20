@@ -1,0 +1,25 @@
+.input-feild{
+    margin-left: 40%;
+}
+
+form{
+    margin-top: 100px;
+}
+
+h1{
+    margin-left: 40%;;
+}
+
+select{
+    width: 25%;
+    height: 50%;
+    margin-right: 20px;
+}
+
+label{
+    font-size:x-large;
+}
+
+.time,.equip,.muscles,.fit-lev,.goal{
+    margin-bottom: 10px;
+}

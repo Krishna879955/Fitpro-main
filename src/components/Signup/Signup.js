@@ -18,11 +18,13 @@ import styles from "./Signup.module.css";
 
 
 function Signup() {
+  // eslint-disable-next-line no-unused-vars
   const [values, setValues] = useState({
     name: "",
     email: "",
     pass: "",
   });
+  // eslint-disable-next-line no-unused-vars
   const [errorMsg, setErrorMsg] = useState("");
 
   const [otp, setOtp] = useState("");

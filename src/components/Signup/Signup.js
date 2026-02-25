@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { Navigate } from "react-router-dom";
 //import R { useState } from "react";
-import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
+import { BsFillShieldLockFill } from "react-icons/bs";
 import OtpInput from "otp-input-react";
 import { CgSpinner } from "react-icons/cg";
 import PhoneInput from "react-phone-input-2";
@@ -16,17 +15,16 @@ import InputControl from "../InputControl/InputControl";
 //import { auth } from "../../firebase";
 
 import styles from "./Signup.module.css";
-import Home from "../Home/Home";
+
 
 function Signup() {
-  const navigate = useNavigate();
   const [values, setValues] = useState({
     name: "",
     email: "",
     pass: "",
   });
   const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
+
   const [otp, setOtp] = useState("");
   const [ph, setPh] = useState("");
   const [loading, setLoading] = useState(false);
@@ -43,7 +41,7 @@ function Signup() {
           callback: (response) => {
             onSignup();
           },
-          "expired-callback": () => {},
+          "expired-callback": () => { },
         },
         auth
       );
@@ -83,28 +81,7 @@ function Signup() {
         setLoading(false);
       });
   }
-  const handleSubmission = () => {
-    if (!values.name || !values.email || !values.pass) {
-      setErrorMsg("Fill all fields");
-      return;
-    }
-    setErrorMsg("");
 
-    setSubmitButtonDisabled(true);
-    createUserWithEmailAndPassword(auth, values.email, values.pass)
-      .then(async (res) => {
-        setSubmitButtonDisabled(false);
-        const user = res.user;
-        await updateProfile(user, {
-          displayName: values.name,
-        });
-        <navigate to={MainPage}/>
-      })
-      .catch((err) => {
-        setSubmitButtonDisabled(false);
-        setErrorMsg(err.message);
-      });
-  };
 
   return (
     <div className={styles.container}>
@@ -146,8 +123,8 @@ function Signup() {
           <div id="recaptcha-container"></div>
           {user ? (
             <>
-              <Navigate to={MainPage}/>
-              
+              <Navigate to={MainPage} />
+
             </>
           ) : (
             <div>
